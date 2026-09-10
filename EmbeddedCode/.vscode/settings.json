@@ -25,5 +25,6 @@
     "--query-driver=**",
     "--compile-commands-dir=c:\\Users\\borisg912\\Projects\\3DNA\\EmbeddedCode\\build"
   ],
-  "idf.currentSetup": "C:\\esp\\v6.1\\esp-idf"
+  "idf.currentSetup": "C:\\esp\\v6.1\\esp-idf",
+  "idf.flashType": "JTAG"
 }

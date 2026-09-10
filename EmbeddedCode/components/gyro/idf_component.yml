@@ -1,0 +1,4 @@
+dependencies:
+  mpu6050:
+    version: ">=1.0.0"
+    public: true
