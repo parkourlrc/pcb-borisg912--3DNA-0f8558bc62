@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  xmlns:uap7="http://schemas.microsoft.com/appx/manifest/uap/windows10/7"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+  IgnorableNamespaces="uap uap2 uap3 uap4 uap5 uap7 uap10 mp">
+
+  <Identity
+    Name="UnifyDev.3DNA"
+    Publisher="CN=6867D346-5568-4921-A155-89461A29E3F7"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="aee4fae1-fa7f-4629-8fef-8d1959ebeb62" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>3DNA</DisplayName>
+    <PublisherDisplayName>UnifyDev</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="AppWindows.App">
+      <uap:VisualElements
+        DisplayName="3DNA"
+        Description="Interactive Windows companion app for Project 3DNA"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\SplashScreen.png" uap5:Optional="false"/>
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="threedna"/>
+        </uap:Extension>
+        <uap3:Extension Category="windows.appUriHandler">
+          <uap3:AppUriHandler uap7:Name="3DNA App">
+            <uap5:Host Name="dimension.project3dna.buzz"/>
+            <uap5:Host Name="app.project3dna.buzz"/>
+          </uap3:AppUriHandler>
+        </uap3:Extension>
+        <uap5:Extension Category="windows.appExecutionAlias">
+          <uap5:AppExecutionAlias uap10:Subsystem="windows">
+            <uap5:ExecutionAlias Alias="3DNA.exe"/>
+          </uap5:AppExecutionAlias>
+        </uap5:Extension>
+      </Extensions>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Type="include" Match="http://*.project3dna.buzz" WindowsRuntimeAccess="all"/>
+        <uap:Rule Type="include" Match="https://*.project3dna.buzz" WindowsRuntimeAccess="all"/>
+      </uap:ApplicationContentUriRules>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="allJoyn"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <uap:Capability Name="musicLibrary"/>
+    <uap:Capability Name="objects3D"/>
+    <DeviceCapability Name="bluetooth"/>
+    <DeviceCapability Name="proximity"/>
+  </Capabilities>
+</Package>

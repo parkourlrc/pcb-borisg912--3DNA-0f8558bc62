@@ -629,7 +629,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "../../../Downloads/board/",
+      "plot": "Fabrication/",
       "specctra_dsn": "",
       "step": "../BoardModel.step",
       "vrml": ""

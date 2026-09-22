@@ -1,0 +1,90 @@
+﻿<Page
+    x:Class="AppWindows.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppWindows"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:obj="using:AppWindows.Objects"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid>
+        <StackPanel
+            Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Image
+                    Stretch="Uniform" MaxWidth="240" MaxHeight="240"
+                    Source="/Assets/Logo.png"/>
+            </Grid>
+            <Grid
+                MaxWidth="320" Margin="2,8"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock
+                        HorizontalAlignment="Center" Grid.Row="0"
+                        Style="{StaticResource TitleTextBlockStyle}"
+                        Text="Select a device to connect"/>
+                    <ListView
+                        x:Name="DiscoveryDeviceView"
+                        MinHeight="50" MaxHeight="160" MinWidth="150"
+                        Margin="0,5" HorizontalAlignment="Stretch" Grid.Row="1"
+                        SelectionMode="None" IsItemClickEnabled="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="obj:DiscoveryDeviceObject">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    ToolTipService.ToolTip="{x:Bind GetDeviceConnectivityString()}">
+                                    <Grid>
+                                        <FontIcon
+                                            Margin="2" FontSize="22"
+                                            Glyph="{x:Bind GetDeviceConnectivityGlyph()}"/>
+                                        <muxc:InfoBadge
+                                            Grid.Column="1" Width="8" Height="8" Background="Green"
+                                            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    </Grid>
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="3,0">
+                                        <TextBlock Text="{x:Bind Name}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Text="{x:Bind Address}" VerticalAlignment="Top"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListViewItem HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal" Grid.Column="0"
+                                HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Grid>
+                                    <FontIcon Glyph="&#xE7E3;" Margin="2" FontSize="22"/>
+                                    <muxc:InfoBadge
+                                        Grid.Column="1" Width="8" Height="8" Background="Green"
+                                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                </Grid>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="3,0">
+                                    <TextBlock Text="Sigma" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="192.168.1.100" VerticalAlignment="Top"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                    <Button Grid.Row="2"
+                        HorizontalAlignment="Center" Margin="0,3"
+                        Click="Button_Click">
+                        <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <FontIcon Glyph="&#xEB44;" Margin="2" FontSize="20"/>
+                            <TextBlock Text="Search for devices" Margin="3,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
